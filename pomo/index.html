@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PomoEasy Timer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="logo">
+          <span class="logo-dot"></span>
+          <span class="logo-text">pomoeasy</span>
+        </div>
+        <div class="header-controls">
+          <button class="nightlight-toggle" aria-label="Toggle night light">
+            <span class="nightlight-icon">👁</span>
+          </button>
+          <button class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-icon">☾</span>
+          </button>
+        </div>
+      </header>
+
+      <div id="active-task-banner" class="active-task-banner" aria-live="polite"></div>
+
+      <main class="app-main">
+        <section class="timer-card" aria-label="Pomodoro timer">
+          <div class="mode-switch">
+            <button class="mode-button active" data-mode="pomodoro">
+              Focus
+            </button>
+            <button class="mode-button" data-mode="short-break">
+              Short break
+            </button>
+            <button class="mode-button" data-mode="long-break">
+              Long break
+            </button>
+          </div>
+
+          <div class="timer-display">
+            <div class="timer-time" id="time-display">25:00</div>
+            <div class="timer-progress">
+              <div class="timer-progress-bar" id="progress-bar"></div>
+            </div>
+          </div>
+
+          <div class="timer-controls">
+            <button id="start-pause" class="primary-button">
+              Start
+            </button>
+            <button id="reset" class="ghost-button">
+              Reset
+            </button>
+          </div>
+
+          <form class="timer-settings" id="settings-form">
+            <div class="settings-row">
+              <label class="settings-field">
+                <span>Focus (min)</span>
+                <input
+                  type="number"
+                  id="pomodoro-input"
+                  min="1"
+                  max="180"
+                  value="25"
+                />
+              </label>
+              <label class="settings-field">
+                <span>Short break</span>
+                <input
+                  type="number"
+                  id="short-break-input"
+                  min="1"
+                  max="60"
+                  value="5"
+                />
+              </label>
+              <label class="settings-field">
+                <span>Long break</span>
+                <input
+                  type="number"
+                  id="long-break-input"
+                  min="1"
+                  max="60"
+                  value="15"
+                />
+              </label>
+            </div>
+          </form>
+
+          <div class="session-info">
+            <div class="session-label">
+              Session
+            </div>
+            <div class="session-value" id="session-count">
+              1
+            </div>
+          </div>
+        </section>
+
+        <section class="tasks-card" aria-label="Task list">
+          <div class="tasks-header">
+            <h2>Today's focus</h2>
+          </div>
+          <form id="task-form" class="task-form">
+            <input
+              type="text"
+              id="task-input"
+              placeholder="What are you working on?"
+              autocomplete="off"
+            />
+            <button type="submit" class="secondary-button">
+              Add
+            </button>
+          </form>
+          <ul id="task-list" class="task-list"></ul>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <span>Built with focus and intention.</span>
+      </footer>
+    </div>
+
+    <div id="quote-banner" class="quote-banner" aria-live="polite"></div>
+    <div id="task-complete-dialog" class="task-complete-dialog" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
